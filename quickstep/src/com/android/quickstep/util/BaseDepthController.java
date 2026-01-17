@@ -132,10 +132,10 @@ public class BaseDepthController {
         if (Flags.allAppsBlur() || enableOverviewBackgroundWallpaperBlur()) {
             mCrossWindowBlursEnabled =
                     CrossWindowBlurListeners.getInstance().isCrossWindowBlurEnabled();
-            mMaxBlurRadius = activity.getResources().getDimensionPixelSize(
-                    R.dimen.max_depth_blur_radius_enhanced);
+            mMaxBlurRadius = 15;//activity.getResources().getDimensionPixelSize(
+                    //R.dimen.max_depth_blur_radius_enhanced);
         } else {
-            mMaxBlurRadius = activity.getResources().getInteger(R.integer.max_depth_blur_radius);
+            mMaxBlurRadius = 15;//activity.getResources().getInteger(R.integer.max_depth_blur_radius);
         }
         mWallpaperManager = activity.getSystemService(WallpaperManager.class);
 
@@ -232,7 +232,7 @@ public class BaseDepthController {
         int newBlur = mCrossWindowBlursEnabled && !hasOpaqueBg && !mPauseBlurs ? (int) (blurAmount
                 * mMaxBlurRadius) : 0;
         int delta = Math.abs(newBlur - previousBlur);
-        if (skipSimilarBlur && delta < Utilities.dpToPx(1) && newBlur != 0 && previousBlur != 0
+        if (false && delta < Utilities.dpToPx(1) && newBlur != 0 && previousBlur != 0
                 && blurAmount != 1f) {
             Log.d(TAG, "Skipping small blur delta. newBlur: " + newBlur + " previousBlur: "
                     + previousBlur + " delta: " + delta + " surface: " + blurSurface);
